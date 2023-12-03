@@ -5,6 +5,7 @@ import { BasicShadowMap, NoToneMapping } from "three";
 import { extend } from "@tresjs/core";
 import Sun from "./Sun.vue";
 import Moon from "./Moon.vue";
+import Pyramids from "./Pyramids.vue";
 
 const gl = {
   clearColor: "#2D2D2E",
@@ -13,7 +14,7 @@ const gl = {
   shadowMapType: BasicShadowMap,
   toneMapping: NoToneMapping,
 };
-extend({ Sun, Moon });
+extend({ Sun, Moon, Pyramids });
 </script>
 
 <template>
@@ -25,6 +26,9 @@ extend({ Sun, Moon });
     </Suspense>
     <Suspense>
       <Moon />
+    </Suspense>
+    <Suspense>
+      <Pyramids />
     </Suspense>
     <TresMesh :rotate-x="-Math.PI / 2" receive-shadow>
       <TresPlaneGeometry :args="[100, 100]" />
