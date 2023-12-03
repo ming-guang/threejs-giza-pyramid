@@ -32,7 +32,7 @@ extend({ Sun, Moon, Pyramids });
     </Suspense>
     <TresMesh :rotate-x="-Math.PI / 2" receive-shadow>
       <TresPlaneGeometry :args="[100, 100]" />
-      <TresMeshStandardMaterial :color="new Color('#FFFFFF')" />
+      <TresMeshStandardMaterial :color="new Color('#F0ECC1')" />
     </TresMesh>
   </TresCanvas>
 </template>
