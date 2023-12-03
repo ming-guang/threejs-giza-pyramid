@@ -5,20 +5,25 @@ import { useRenderLoop } from "@tresjs/core";
 import { models } from "../stores/models";
 import { getCurrentTime } from "../stores/time";
 const model = await models.moon.loadObject();
-const phase = 14000;
-const sunrise = 14000;
-const noon = 28000;
-const sunset = 52000;
+const phase = 18000;
+const sunrise = 18000;
+const noon = 36000;
+const sunset = 54000;
 const moon = reactive({
   x: 0,
   y: -150,
   z: 0,
-  intensity: 70,
+  intensity: 0.7,
   key: Date.now.toString(),
 });
 const { onLoop } = useRenderLoop();
 onLoop(({}) => {
   const now = getCurrentTime();
+  if (now >= sunrise + 4500 && now <= sunset - 4500) {
+    moon.intensity = 0;
+  } else {
+    moon.intensity = 0.7;
+  }
   if (now >= sunrise && now <= sunset) {
     const highRatio = (now <= noon ? now - sunrise : sunset - now) / phase;
     moon.x = 0;
@@ -111,13 +116,6 @@ onLoop(({}) => {
     :target="model"
     :cast-shadow="true"
   />
-  <!-- Simulate sun light -->
-  <TresSpotLight
-    :color="new Color('#FFFFFF')"
-    :intensity="moon.intensity"
-    :distance="0"
-    :position="[moon.x, moon.y - 30, moon.z]"
-    :decay="0.7"
-    :cast-shadow="true"
-  />
+  <!-- Simulate  moon light -->
+  <TresAmbientLight :color="new Color('#FFFFFF')" :intensity="moon.intensity" />
 </template>
