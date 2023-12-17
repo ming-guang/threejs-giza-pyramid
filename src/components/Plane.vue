@@ -4,6 +4,10 @@ import { Color, Vector3 } from "three";
 import { useRenderLoop } from "@tresjs/core";
 import { models } from "../stores/models";
 import { getCurrentTime } from "../stores/time";
+import { storeToRefs } from "pinia";
+import { useCameraStore } from "@/stores/camera";
+
+const { currentMode } = storeToRefs(useCameraStore());
 
 const model = await models.plane.loadObject();
 const plane = reactive({
@@ -30,6 +34,12 @@ onLoop(({}) => {
 </script>
 
 <template>
+  <TresPerspectiveCamera
+    v-if="currentMode === 'planeTrip'"
+    :position="[plane.x, plane.y, plane.z]"
+    :look-at="[plane.x, 0, plane.z]"
+  />
+
   <Suspense>
     <primitive
       :object="model"
