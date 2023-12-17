@@ -46,4 +46,5 @@ export const models: { [key: string]: SimpleModel } = {
   teacup: new SimpleModel("Teacup", "assets/models/teacup.obj"),
   sun: new SimpleModel("Sun", "assets/models/sun/scene.gltf"),
   moon: new SimpleModel("Moon", "assets/models/moon/scene.gltf"),
+  plane: new SimpleModel("Plane", "assets/models/plane/scene.gltf"),
 };

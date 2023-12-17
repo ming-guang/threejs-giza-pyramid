@@ -6,6 +6,7 @@ import { extend } from "@tresjs/core";
 import Clock from "./Clock.vue";
 import Sun from "./Sun.vue";
 import Moon from "./Moon.vue";
+import Plane from "./Plane.vue";
 import Pyramids from "./Pyramids.vue";
 
 const gl = {
@@ -28,6 +29,9 @@ extend({ Sun, Moon, Pyramids });
     </Suspense>
     <Suspense>
       <Moon />
+    </Suspense>
+    <Suspense>
+      <Plane />
     </Suspense>
     <Suspense>
       <Pyramids />
